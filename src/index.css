@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@theme {
+  --color-primary: #dc2626;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #fca5a5;
+  --color-on-primary-container: #450a0a;
+  --color-secondary: #3b82f6;
+  --color-on-secondary: #ffffff;
+  --color-tertiary: #10b981;
+  --color-on-tertiary: #ffffff;
+  --color-background: #020617;
+  --color-on-background: #f8fafc;
+  --color-surface: #0f172a;
+  --color-on-surface: #f1f5f9;
+  --color-surface-variant: #1e293b;
+  --color-on-surface-variant: #cbd5e1;
+  --color-outline: #475569;
+  --color-outline-variant: #334155;
+  --color-surface-container-lowest: #020617;
+  --color-surface-container-low: #0f172a;
+  --color-surface-container: #1e293b;
+  --color-surface-container-high: #334155;
+  --color-surface-container-highest: #475569;
+
+  --font-label-mono: "JetBrains Mono", monospace;
+  --font-headline-lg: "Hanken Grotesk", sans-serif;
+  --font-display-lg: "Hanken Grotesk", sans-serif;
+  --font-headline-lg-mobile: "Hanken Grotesk", sans-serif;
+  --font-body-md: "Inter", sans-serif;
+}
+
+@layer utilities {
+  .font-label-mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 18px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
+  .text-label-mono { font-size: 13px; line-height: 18px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
+  .font-headline-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 700; }
+  .text-headline-lg { font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 700; }
+  .font-display-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 72px; line-height: 80px; letter-spacing: -0.04em; font-weight: 800; }
+  .text-display-lg { font-size: 72px; line-height: 80px; letter-spacing: -0.04em; font-weight: 800; }
+  .font-headline-lg-mobile { font-family: 'Hanken Grotesk', sans-serif; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
+  .text-headline-lg-mobile { font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
+  .font-body-md { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 28px; font-weight: 400; color: #cbd5e1; }
+  .text-body-md { font-size: 17px; line-height: 28px; font-weight: 400; color: #cbd5e1; }
+  
+  .glass-panel {
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .glass-card {
+      background: rgba(30, 41, 59, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .glass-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(220, 38, 38, 0.3);
+      box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.5), 0 10px 20px -5px rgba(220, 38, 38, 0.1);
+      background: rgba(30, 41, 59, 0.7);
+  }
+  
+  .glow-btn {
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px 0 rgba(220, 38, 38, 0.39);
+  }
+  .glow-btn:hover {
+      box-shadow: 0 6px 20px rgba(220, 38, 38, 0.23);
+      transform: translateY(-2px);
+  }
+
+  .ambient-bg {
+      background: radial-gradient(circle at top right, rgba(220, 38, 38, 0.08) 0%, transparent 50%),
+                  radial-gradient(circle at bottom left, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+      background-color: #020617;
+  }
+
+  .text-gradient {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #ffffff, #94a3b8);
+  }
+  
+  .text-gradient-accent {
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-image: linear-gradient(to right, #f87171, #dc2626);
+  }
+}
