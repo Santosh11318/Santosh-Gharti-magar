@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/Santosh-Gharti-magar/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

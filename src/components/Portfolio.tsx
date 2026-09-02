@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from "motion/react";
 
 const projects = [
   {
+    name: "Santosh Gharti Magar",
+    category: "portfolio",
+    label: "PERSONAL WEBSITE",
+    url: "https://santosh11318.github.io/Santosh-Gharti-magar/",
+    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Santosh-Gharti-magar"
+  },
+  {
     name: "Nisha Beauty Salon",
     category: "business",
     label: "BUSINESS / SERVICE",
