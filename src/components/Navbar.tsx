@@ -67,22 +67,6 @@ export default function Navbar() {
           </span>
         </a>
 
-        <div className="hidden lg:flex items-center gap-10">
-          {navLinks.map((link) => (
-            <a 
-              key={link.name}
-              className={`font-label-mono text-label-mono transition-all duration-300 ${
-                activeSection === link.href.substring(1) 
-                  ? 'text-on-surface font-bold border-b-2 border-primary pb-1' 
-                  : 'text-on-surface-variant hover:text-on-surface'
-              }`} 
-              href={link.href}
-            >
-              {link.name}
-            </a>
-          ))}
-        </div>
-
         <div className="flex items-center gap-4 md:gap-6">
           <button onClick={toggleTheme} className="p-2 md:p-2.5 rounded-full bg-surface-container border border-outline-variant hover:bg-surface-variant transition-colors text-on-surface shadow-sm flex items-center justify-center">
             <span className="material-symbols-outlined text-[18px] md:text-[20px]" style={{ fontVariationSettings: "'FILL' 0" }}>
@@ -94,7 +78,7 @@ export default function Navbar() {
           </a>
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-md text-on-surface"
+            className="p-2 rounded-md text-on-surface"
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -107,7 +91,7 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden overflow-hidden bg-surface border-b border-outline-variant/30"
+            className="overflow-hidden bg-surface border-b border-outline-variant/30"
           >
             <div className="px-6 pt-2 pb-6 flex flex-col space-y-4">
               {navLinks.map((link) => (
