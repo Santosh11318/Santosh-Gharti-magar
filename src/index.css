@@ -36,16 +36,16 @@ html {
 }
 
 @layer utilities {
-  .font-label-mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 18px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
-  .text-label-mono { font-size: 13px; line-height: 18px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
-  .font-headline-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 700; }
-  .text-headline-lg { font-size: 48px; line-height: 56px; letter-spacing: -0.02em; font-weight: 700; }
-  .font-display-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 72px; line-height: 80px; letter-spacing: -0.04em; font-weight: 800; }
-  .text-display-lg { font-size: 72px; line-height: 80px; letter-spacing: -0.04em; font-weight: 800; }
-  .font-headline-lg-mobile { font-family: 'Hanken Grotesk', sans-serif; font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
-  .text-headline-lg-mobile { font-size: 36px; line-height: 44px; font-weight: 700; letter-spacing: -0.01em; }
-  .font-body-md { font-family: 'Inter', sans-serif; font-size: 17px; line-height: 28px; font-weight: 400; color: #cbd5e1; }
-  .text-body-md { font-size: 17px; line-height: 28px; font-weight: 400; color: #cbd5e1; }
+  .font-label-mono { font-family: 'JetBrains Mono', monospace; font-size: 14px; line-height: 20px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
+  .text-label-mono { font-size: 14px; line-height: 20px; letter-spacing: 0.1em; font-weight: 500; text-transform: uppercase; }
+  .font-headline-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 54px; line-height: 62px; letter-spacing: -0.02em; font-weight: 700; }
+  .text-headline-lg { font-size: 54px; line-height: 62px; letter-spacing: -0.02em; font-weight: 700; }
+  .font-display-lg { font-family: 'Hanken Grotesk', sans-serif; font-size: 80px; line-height: 88px; letter-spacing: -0.04em; font-weight: 800; }
+  .text-display-lg { font-size: 80px; line-height: 88px; letter-spacing: -0.04em; font-weight: 800; }
+  .font-headline-lg-mobile { font-family: 'Hanken Grotesk', sans-serif; font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.01em; }
+  .text-headline-lg-mobile { font-size: 40px; line-height: 48px; font-weight: 700; letter-spacing: -0.01em; }
+  .font-body-md { font-family: 'Inter', sans-serif; font-size: 19px; line-height: 30px; font-weight: 400; color: #cbd5e1; }
+  .text-body-md { font-size: 19px; line-height: 30px; font-weight: 400; color: #cbd5e1; }
   
   .glass-panel {
       background: rgba(15, 23, 42, 0.7);

@@ -3,7 +3,7 @@ import Counter from "./Counter";
 
 export default function About() {
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32" id="about">
+    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 scroll-mt-28" id="about">
       <div className="mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}

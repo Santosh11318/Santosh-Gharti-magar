@@ -1,8 +1,19 @@
+import React, { MouseEvent } from "react";
 import { Youtube, Facebook, ArrowUp } from "lucide-react";
 
-export default function Footer() {
+interface FooterProps {
+  onOpenAdmin?: () => void;
+}
+
+export default function Footer({ onOpenAdmin }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleSecretClick = (e: React.MouseEvent) => {
+    if (e.detail >= 3) {
+      onOpenAdmin?.();
+    }
   };
 
   return (
@@ -110,7 +121,23 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-zinc-900 pt-8 flex flex-col md:flex-row items-center justify-between text-zinc-500 text-sm gap-4">
-          <p>© 2026 Santosh Gharti Magar. All Rights Reserved.</p>
+          <div className="flex items-center gap-2">
+            <p 
+              onClick={handleSecretClick}
+              className="cursor-default select-none"
+              title=""
+            >
+              © 2026 Santosh Gharti Magar. All Rights Reserved.
+            </p>
+            {onOpenAdmin && (
+              <button
+                onClick={onOpenAdmin}
+                className="w-2 h-2 rounded-full bg-zinc-800/60 hover:bg-zinc-700 transition-colors cursor-pointer"
+                title=""
+                aria-label="Santosh Portal"
+              />
+            )}
+          </div>
           
           <button 
             onClick={scrollToTop}

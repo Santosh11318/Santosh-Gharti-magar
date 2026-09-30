@@ -1,0 +1,215 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <radialGradient id="heroGlowCenter" cx="65%" cy="45%" r="65%">
+      <stop offset="0%" stop-color="#311042" stop-opacity="0.9" />
+      <stop offset="40%" stop-color="#180b2a" stop-opacity="0.8" />
+      <stop offset="70%" stop-color="#090d21" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="1" />
+    </radialGradient>
+    <radialGradient id="redSphere" cx="20%" cy="30%" r="50%">
+      <stop offset="0%" stop-color="#dc2626" stop-opacity="0.4" />
+      <stop offset="60%" stop-color="#991b1b" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="cyanSphere" cx="80%" cy="35%" r="50%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.45" />
+      <stop offset="60%" stop-color="#0f172a" stop-opacity="0.1" />
+      <stop offset="100%" stop-color="#020617" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Vibrant Chart Gradients -->
+    <linearGradient id="areaGradRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.75" />
+      <stop offset="50%" stop-color="#f97316" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#dc2626" stop-opacity="0.0" />
+    </linearGradient>
+    <linearGradient id="areaGradCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.65" />
+      <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.0" />
+    </linearGradient>
+
+    <linearGradient id="neonLine" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f43f5e" />
+      <stop offset="35%" stop-color="#fb923c" />
+      <stop offset="70%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#4ade80" />
+    </linearGradient>
+
+    <linearGradient id="glassCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.92" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="accentOrangeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ff5722" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+
+    <!-- Filters for Intense Glow -->
+    <filter id="intenseGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="12" result="blur1" />
+      <feGaussianBlur stdDeviation="4" result="blur2" />
+      <feMerge>
+        <feMergeNode in="blur1" />
+        <feMergeNode in="blur2" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="cardShadowStrong" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000000" flood-opacity="0.85" />
+      <feDropShadow dx="0" dy="4" stdDeviation="8" flood-color="#dc2626" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Dark Cosmic Gradient Base -->
+  <rect width="1920" height="1080" fill="url(#heroGlowCenter)" />
+  <rect width="1920" height="1080" fill="url(#redSphere)" />
+  <rect width="1920" height="1080" fill="url(#cyanSphere)" />
+
+  <!-- Luminous Digital Marketing Grid Floor -->
+  <g opacity="0.35">
+    <path d="M 0,720 L 1920,720 M 0,780 L 1920,780 M 0,840 L 1920,840 M 0,910 L 1920,910 M 0,990 L 1920,990 M 0,1080 L 1920,1080" stroke="#38bdf8" stroke-width="1.5" />
+    <path d="M 960,650 L 0,1080 M 960,650 L 240,1080 M 960,650 L 480,1080 M 960,650 L 720,1080 M 960,650 L 960,1080 M 960,650 L 1200,1080 M 960,650 L 1440,1080 M 960,650 L 1680,1080 M 960,650 L 1920,1080" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="8,6" />
+  </g>
+
+  <!-- Central Digital Marketing Growth Stream (Giant Neon Chart Waves) -->
+  <g transform="translate(0, 100)">
+    <!-- Cyan Secondary Wave -->
+    <path d="M 0,680 C 350,620 550,560 900,480 C 1250,400 1550,260 1920,180 L 1920,980 L 0,980 Z" fill="url(#areaGradCyan)" />
+    <!-- Vibrant Red/Orange Primary Wave -->
+    <path d="M 0,730 C 320,670 600,580 980,420 C 1320,290 1620,190 1920,90 L 1920,980 L 0,980 Z" fill="url(#areaGradRed)" />
+    <!-- Neon Surge Line -->
+    <path d="M 0,730 C 320,670 600,580 980,420 C 1320,290 1620,190 1920,90" fill="none" stroke="url(#neonLine)" stroke-width="6" filter="url(#intenseGlow)" />
+
+    <!-- Luminous Key Performance Points -->
+    <circle cx="320" cy="670" r="8" fill="#ffffff" stroke="#ef4444" stroke-width="4" filter="url(#intenseGlow)" />
+    <circle cx="980" cy="420" r="11" fill="#ffffff" stroke="#f97316" stroke-width="5" filter="url(#intenseGlow)" />
+    <circle cx="1620" cy="190" r="14" fill="#ffffff" stroke="#38bdf8" stroke-width="6" filter="url(#intenseGlow)" />
+  </g>
+
+  <!-- ==================== DIGITAL MARKETING POSTER VISUALS ==================== -->
+
+  <!-- 1. BIG DIGITAL MARKETING DASHBOARD CARD (Right Side) -->
+  <g transform="translate(1320, 110)" filter="url(#cardShadowStrong)">
+    <rect width="520" height="340" rx="28" fill="url(#glassCardGrad)" stroke="#38bdf8" stroke-width="2" />
+    <rect x="0" y="0" width="520" height="56" rx="28" fill="#1e293b" fill-opacity="0.8" />
+    
+    <!-- Window controls -->
+    <circle cx="32" cy="28" r="7" fill="#ef4444" />
+    <circle cx="54" cy="28" r="7" fill="#f59e0b" />
+    <circle cx="76" cy="28" r="7" fill="#10b981" />
+    <text x="110" y="34" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="14" font-weight="600" letter-spacing="1">MARKETING CAMPAIGN ANALYTICS</text>
+    <rect x="420" y="16" width="75" height="24" rx="12" fill="#10b981" fill-opacity="0.2" />
+    <text x="435" y="32" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">LIVE ●</text>
+
+    <!-- Metric Highlight Big Box -->
+    <g transform="translate(30, 80)">
+      <rect width="210" height="95" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+      <text x="20" y="32" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="13">CONVERSION RATE</text>
+      <text x="20" y="68" fill="#22c55e" font-family="'Hanken Grotesk', sans-serif" font-size="34" font-weight="900">+480%</text>
+      <path d="M 160,55 L 180,35 L 195,45 L 205,25 M 195,25 L 205,25 L 205,35" stroke="#22c55e" stroke-width="3" fill="none" stroke-linecap="round" />
+    </g>
+
+    <g transform="translate(260, 80)">
+      <rect width="230" height="95" rx="16" fill="#0f172a" stroke="#dc2626" stroke-width="1.5" />
+      <text x="20" y="32" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="13">TOTAL AD REVENUE</text>
+      <text x="20" y="68" fill="#ffffff" font-family="'Hanken Grotesk', sans-serif" font-size="32" font-weight="900">$142,850</text>
+      <text x="165" y="80" fill="#f87171" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">5.2x ROI</text>
+    </g>
+
+    <!-- Marketing Bars Chart inside Card -->
+    <g transform="translate(30, 200)">
+      <text x="0" y="15" fill="#e2e8f0" font-family="'Inter', sans-serif" font-size="14" font-weight="bold">Multi-Channel Customer Acquisition</text>
+      
+      <!-- Bar 1: Google Ads & SEO -->
+      <text x="0" y="45" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12">Google Search &amp; SEO</text>
+      <rect x="180" y="32" width="280" height="14" rx="7" fill="#1e293b" />
+      <rect x="180" y="32" width="250" height="14" rx="7" fill="url(#neonLine)" filter="url(#intenseGlow)" />
+      <text x="470" y="44" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">92%</text>
+
+      <!-- Bar 2: Meta / Social Ads -->
+      <text x="0" y="75" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12">Meta &amp; Social Ads</text>
+      <rect x="180" y="62" width="280" height="14" rx="7" fill="#1e293b" />
+      <rect x="180" y="62" width="220" height="14" rx="7" fill="url(#accentOrangeGrad)" />
+      <text x="470" y="74" fill="#fb923c" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">81%</text>
+
+      <!-- Bar 3: AI Funnel Optimization -->
+      <text x="0" y="105" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="12">AI Sales Funnels</text>
+      <rect x="180" y="92" width="280" height="14" rx="7" fill="#1e293b" />
+      <rect x="180" y="92" width="265" height="14" rx="7" fill="#10b981" />
+      <text x="470" y="104" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">98%</text>
+    </g>
+  </g>
+
+  <!-- 2. HIGH IMPACT DIGITAL MARKETING MEGAPHONE POSTER ICON (Left Top) -->
+  <g transform="translate(60, 140)" filter="url(#cardShadowStrong)">
+    <rect width="440" height="230" rx="24" fill="url(#glassCardGrad)" stroke="#f43f5e" stroke-width="2" />
+    
+    <!-- 3D Rocket / Megaphone Emblem -->
+    <g transform="translate(30, 30)">
+      <circle cx="45" cy="45" r="45" fill="url(#accentOrangeGrad)" filter="url(#intenseGlow)" />
+      <!-- Megaphone graphic -->
+      <path d="M 30,35 L 42,35 L 60,22 L 60,68 L 42,55 L 30,55 Z" fill="#ffffff" />
+      <path d="M 68,32 Q 78,45 68,58 M 76,24 Q 90,45 76,66" stroke="#ffffff" stroke-width="4" fill="none" stroke-linecap="round" />
+    </g>
+
+    <g transform="translate(145, 45)">
+      <text x="0" y="0" fill="#fca5a5" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold" letter-spacing="2">DIGITAL MARKETING</text>
+      <text x="0" y="28" fill="#ffffff" font-family="'Hanken Grotesk', sans-serif" font-size="24" font-weight="900">Brand Growth &amp; Ads</text>
+      <text x="0" y="52" fill="#cbd5e1" font-family="'Inter', sans-serif" font-size="14">AI-driven multi-channel marketing campaigns</text>
+    </g>
+
+    <!-- Marketing Badges inside card -->
+    <g transform="translate(30, 145)">
+      <rect width="115" height="38" rx="19" fill="#ef4444" fill-opacity="0.25" stroke="#ef4444" stroke-width="1.5" />
+      <text x="18" y="24" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">#1 SEO RANK</text>
+
+      <rect x="130" width="125" height="38" rx="19" fill="#0284c7" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="145" y="24" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">PPC &amp; ADS</text>
+
+      <rect x="270" width="135" height="38" rx="19" fill="#10b981" fill-opacity="0.25" stroke="#10b981" stroke-width="1.5" />
+      <text x="285" y="24" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">FUNNELS</text>
+    </g>
+  </g>
+
+  <!-- 3. TARGET AUDIENCE LASER RADAR (Right Center) -->
+  <g transform="translate(1560, 520)" filter="url(#intenseGlow)">
+    <circle cx="120" cy="120" r="110" fill="none" stroke="#ef4444" stroke-width="2" stroke-dasharray="10,6" opacity="0.8" />
+    <circle cx="120" cy="120" r="80" fill="none" stroke="#f97316" stroke-width="2.5" opacity="0.9" />
+    <circle cx="120" cy="120" r="50" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="6,4" />
+    <circle cx="120" cy="120" r="16" fill="#ef4444" />
+    <line x1="120" y1="0" x2="120" y2="240" stroke="#f87171" stroke-width="1.5" />
+    <line x1="0" y1="120" x2="240" y2="120" stroke="#f87171" stroke-width="1.5" />
+    
+    <!-- Target Marker -->
+    <rect x="150" y="40" width="160" height="42" rx="10" fill="#0f172a" stroke="#ef4444" stroke-width="1.5" />
+    <text x="162" y="66" fill="#fca5a5" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">AUDIENCE LOCKED</text>
+  </g>
+
+  <!-- 4. FLOATING CONVERSION & TRAFFIC PILLS (Across bottom & middle) -->
+  <g transform="translate(1100, 680)" filter="url(#cardShadowStrong)">
+    <rect width="360" height="74" rx="37" fill="url(#glassCardGrad)" stroke="#10b981" stroke-width="2" />
+    <circle cx="38" cy="37" r="22" fill="#10b981" fill-opacity="0.3" />
+    <path d="M 28,38 L 35,45 L 48,30" stroke="#34d399" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="74" y="32" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">WEBSITE LEAD CONVERSION</text>
+    <text x="74" y="54" fill="#34d399" font-family="'Hanken Grotesk', sans-serif" font-size="20" font-weight="bold">+340% Higher Inquiries</text>
+  </g>
+
+  <g transform="translate(80, 520)" filter="url(#cardShadowStrong)">
+    <rect width="320" height="70" rx="35" fill="url(#glassCardGrad)" stroke="#38bdf8" stroke-width="2" />
+    <circle cx="36" cy="35" r="22" fill="#0284c7" fill-opacity="0.3" />
+    <path d="M 27,42 L 36,28 L 45,42" stroke="#38bdf8" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+    <text x="70" y="30" fill="#94a3b8" font-family="'Inter', sans-serif" font-size="12">GOOGLE SEARCH TRAFFIC</text>
+    <text x="70" y="52" fill="#38bdf8" font-family="'Hanken Grotesk', sans-serif" font-size="19" font-weight="bold">150,000+ Monthly Hits</text>
+  </g>
+
+  <!-- Floating Starfield / Glowing Orbs -->
+  <circle cx="680" cy="220" r="4" fill="#f43f5e" filter="url(#intenseGlow)" />
+  <circle cx="850" cy="310" r="5" fill="#38bdf8" filter="url(#intenseGlow)" />
+  <circle cx="1200" cy="200" r="6" fill="#facc15" filter="url(#intenseGlow)" />
+  <circle cx="1780" cy="460" r="5" fill="#4ade80" filter="url(#intenseGlow)" />
+  <circle cx="520" cy="740" r="4" fill="#ef4444" filter="url(#intenseGlow)" />
+</svg>

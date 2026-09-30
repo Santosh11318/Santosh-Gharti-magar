@@ -12,7 +12,7 @@ export default function Pricing() {
   };
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20" id="pricing">
+    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20 scroll-mt-28" id="pricing">
       <div className="mb-20 text-center">
         <motion.h2 
           initial={{ opacity: 0, y: 40 }}

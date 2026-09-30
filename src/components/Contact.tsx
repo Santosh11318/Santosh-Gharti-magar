@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
 
 export default function Contact() {
@@ -29,7 +29,7 @@ export default function Contact() {
   };
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20" id="contact">
+    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20 scroll-mt-28" id="contact">
       <div className="grid md:grid-cols-2 gap-12 md:gap-20">
         
         <motion.div 

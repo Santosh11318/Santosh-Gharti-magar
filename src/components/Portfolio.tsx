@@ -61,7 +61,8 @@ export default function Portfolio() {
   );
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20" id="projects">
+    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20 scroll-mt-28 relative" id="projects">
+      <span id="portfolio" className="absolute -top-28"></span>
       <div className="flex flex-col md:flex-row justify-between items-end mb-16">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}

@@ -1,0 +1,123 @@
+{
+  "entities": {
+    "BlogPost": {
+      "title": "BlogPost",
+      "description": "A blog article written by the portfolio owner or admin",
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "The title of the blog post",
+          "minLength": 3,
+          "maxLength": 150
+        },
+        "slug": {
+          "type": "string",
+          "description": "URL-friendly slug for the post",
+          "minLength": 3,
+          "maxLength": 160,
+          "pattern": "^[a-z0-9-]+$"
+        },
+        "category": {
+          "type": "string",
+          "description": "Category or topic of the blog post",
+          "enum": ["AI & Tech", "Web Development", "SEO & Marketing", "Business & Growth", "Tutorials"]
+        },
+        "excerpt": {
+          "type": "string",
+          "description": "Brief summary of the article",
+          "minLength": 10,
+          "maxLength": 300
+        },
+        "content": {
+          "type": "string",
+          "description": "Full markdown or formatted text content of the article",
+          "minLength": 20,
+          "maxLength": 50000
+        },
+        "coverImage": {
+          "type": "string",
+          "description": "URL of the cover image",
+          "maxLength": 1000
+        },
+        "authorName": {
+          "type": "string",
+          "description": "Display name of the author",
+          "maxLength": 100
+        },
+        "authorEmail": {
+          "type": "string",
+          "description": "Email address of the author",
+          "maxLength": 120
+        },
+        "authorId": {
+          "type": "string",
+          "description": "Firebase UID of the author",
+          "maxLength": 128
+        },
+        "tags": {
+          "type": "array",
+          "description": "List of tags associated with the post",
+          "items": {
+            "type": "string",
+            "maxLength": 30
+          }
+        },
+        "readTime": {
+          "type": "string",
+          "description": "Estimated read duration (e.g. 5 min read)",
+          "maxLength": 30
+        },
+        "status": {
+          "type": "string",
+          "description": "Publication status of the article",
+          "enum": ["draft", "published"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Server timestamp of creation",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "Server timestamp of last update",
+          "format": "date-time"
+        }
+      },
+      "required": ["title", "slug", "category", "excerpt", "content", "authorId", "status", "createdAt", "updatedAt"]
+    },
+    "Admin": {
+      "title": "Admin",
+      "description": "Designated administrator with publishing permissions",
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Admin email address",
+          "maxLength": 120
+        },
+        "role": {
+          "type": "string",
+          "description": "Role level",
+          "enum": ["admin"]
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp when admin privilege was granted",
+          "format": "date-time"
+        }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/posts/{postId}": {
+      "schema": "#/entities/BlogPost",
+      "description": "Publicly readable published blog posts, managed exclusively by verified admins"
+    },
+    "/admins/{adminId}": {
+      "schema": "#/entities/Admin",
+      "description": "System admin mapping verified against request.auth.uid"
+    }
+  }
+}
