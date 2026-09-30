@@ -53,7 +53,7 @@ export default function BlogSection({ onOpenAdmin, onSelectPost }: BlogSectionPr
   });
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-24 md:py-32 relative scroll-mt-28" id="blog">
+    <section className="px-4 sm:px-6 md:px-20 max-w-[1280px] mx-auto py-16 sm:py-24 md:py-32 relative scroll-mt-28" id="blog">
       {/* Header Row */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div className="space-y-4">

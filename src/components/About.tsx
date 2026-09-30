@@ -3,8 +3,8 @@ import Counter from "./Counter";
 
 export default function About() {
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 scroll-mt-28" id="about">
-      <div className="mb-16">
+    <section className="px-4 sm:px-6 md:px-20 max-w-[1280px] mx-auto py-16 sm:py-24 md:py-32 scroll-mt-28" id="about">
+      <div className="mb-10 sm:mb-16">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -13,52 +13,52 @@ export default function About() {
         >
           About Me
         </motion.h2>
-        <div className="w-20 h-1.5 bg-primary mt-6 rounded-full"></div>
+        <div className="w-16 sm:w-20 h-1.5 bg-primary mt-4 sm:mt-6 rounded-full"></div>
       </div>
       
-      <div className="grid md:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="md:col-span-2 glass-card rounded-[2rem] p-12 flex flex-col justify-center border border-outline-variant/20"
+          className="md:col-span-2 glass-card rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-12 flex flex-col justify-center border border-outline-variant/20"
         >
-          <h3 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-6 leading-tight">
+          <h3 className="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4 sm:mb-6 leading-tight">
             Precision Engineering Meets Creative Vision
           </h3>
-          <p className="font-body-md text-body-md text-on-surface-variant mb-10 text-lg leading-relaxed">
+          <p className="font-body-md text-body-md text-on-surface-variant mb-8 sm:mb-10 text-base sm:text-lg leading-relaxed">
             With over a year of intensive experience in modern web development, I bridge the gap between complex AI capabilities and intuitive user interfaces. I build digital experiences that are not just visually premium, but technically robust.
           </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 mb-8 pt-6 border-t border-outline-variant/20">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8 pt-6 border-t border-outline-variant/20">
             <div>
-              <div className="font-display-lg text-4xl text-primary font-bold mb-1">
+              <div className="font-display-lg text-3xl sm:text-4xl text-primary font-bold mb-1">
                 <Counter end={50} suffix="+" duration={2} />
               </div>
-              <p className="font-label-mono text-xs text-on-surface-variant tracking-widest">PROJECTS DEPLOYED</p>
+              <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">PROJECTS DEPLOYED</p>
             </div>
             <div>
-              <div className="font-display-lg text-4xl text-secondary font-bold mb-1">
+              <div className="font-display-lg text-3xl sm:text-4xl text-secondary font-bold mb-1">
                 <Counter end={30} suffix="+" duration={2.2} />
               </div>
-              <p className="font-label-mono text-xs text-on-surface-variant tracking-widest">HAPPY CLIENTS</p>
+              <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">HAPPY CLIENTS</p>
             </div>
             <div>
-              <div className="font-display-lg text-4xl text-tertiary font-bold mb-1">
+              <div className="font-display-lg text-3xl sm:text-4xl text-tertiary font-bold mb-1">
                 <Counter end={99} suffix="%" duration={2.5} />
               </div>
-              <p className="font-label-mono text-xs text-on-surface-variant tracking-widest">SUCCESS RATE</p>
+              <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">SUCCESS RATE</p>
             </div>
           </div>
 
-          <div className="flex flex-wrap items-center gap-4 text-sm text-on-surface font-label-mono pt-4">
-            <span className="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-lg border border-outline-variant/30">
-              <span className="material-symbols-outlined text-tertiary text-[20px]">verified</span> 
+          <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs sm:text-sm text-on-surface font-label-mono pt-2 sm:pt-4">
+            <span className="flex items-center gap-2 bg-surface-container px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-outline-variant/30">
+              <span className="material-symbols-outlined text-tertiary text-[18px] sm:text-[20px]">verified</span> 
               Verified Pro
             </span>
-            <span className="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-lg border border-outline-variant/30">
-              <span className="material-symbols-outlined text-secondary text-[20px]">code</span> 
+            <span className="flex items-center gap-2 bg-surface-container px-3.5 py-1.5 sm:px-4 sm:py-2 rounded-lg border border-outline-variant/30">
+              <span className="material-symbols-outlined text-secondary text-[18px] sm:text-[20px]">code</span> 
               Clean Code
             </span>
           </div>
@@ -69,7 +69,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-card rounded-[2rem] p-10 flex flex-col items-center text-center justify-center relative overflow-hidden border border-outline-variant/20"
+          className="glass-card rounded-2xl sm:rounded-[2rem] p-6 sm:p-8 md:p-10 flex flex-col items-center text-center justify-center relative overflow-hidden border border-outline-variant/20"
         >
           <div className="absolute -top-10 -right-10 p-4 opacity-5">
             <span className="material-symbols-outlined text-[180px]">fingerprint</span>

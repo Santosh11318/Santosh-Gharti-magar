@@ -29,8 +29,8 @@ export default function Contact() {
   };
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20 scroll-mt-28" id="contact">
-      <div className="grid md:grid-cols-2 gap-12 md:gap-20">
+    <section className="px-4 sm:px-6 md:px-20 max-w-[1280px] mx-auto py-16 sm:py-24 md:py-32 border-t border-outline-variant/20 scroll-mt-28" id="contact">
+      <div className="grid md:grid-cols-2 gap-10 md:gap-20">
         
         <motion.div 
           initial={{ opacity: 0, x: -20 }}
@@ -39,29 +39,29 @@ export default function Contact() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="flex flex-col justify-center"
         >
-          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-6">Initialize Connection</h2>
-          <p className="font-body-md text-on-surface-variant mb-12 text-lg">
+          <h2 className="font-headline-lg text-headline-lg text-on-surface mb-4 sm:mb-6">Initialize Connection</h2>
+          <p className="font-body-md text-on-surface-variant mb-8 sm:mb-12 text-base sm:text-lg">
             Ready to elevate your digital presence? Fill out the parameters below and I'll deploy a response within 24 hours.
           </p>
           
-          <div className="space-y-8">
-            <a href="mailto:santoshghartimagar918@gmail.com" className="flex items-center gap-6 group">
-              <div className="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/30 group-hover:border-primary/50 transition-colors shadow-sm shrink-0">
-                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">mail</span>
+          <div className="space-y-6 sm:space-y-8">
+            <a href="mailto:santoshghartimagar918@gmail.com" className="flex items-center gap-4 sm:gap-6 group">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/30 group-hover:border-primary/50 transition-colors shadow-sm shrink-0">
+                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-[20px] sm:text-[24px]">mail</span>
               </div>
               <div className="overflow-hidden">
-                <p className="text-[11px] font-label-mono text-on-surface-variant tracking-widest mb-1">EMAIL</p>
-                <p className="font-bold text-on-surface text-base md:text-lg truncate">santoshghartimagar918@gmail.com</p>
+                <p className="text-[10px] sm:text-[11px] font-label-mono text-on-surface-variant tracking-widest mb-0.5 sm:mb-1">EMAIL</p>
+                <p className="font-bold text-on-surface text-sm sm:text-base md:text-lg truncate">santoshghartimagar918@gmail.com</p>
               </div>
             </a>
             
-            <a href="https://wa.me/918799747981" target="_blank" rel="noopener noreferrer" className="flex items-center gap-6 group">
-              <div className="w-14 h-14 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/30 group-hover:border-[#25D366]/50 transition-colors shadow-sm shrink-0">
-                <span className="material-symbols-outlined text-[#25D366] opacity-70 group-hover:opacity-100 transition-opacity">chat</span>
+            <a href="https://wa.me/918799747981" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 sm:gap-6 group">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-surface-container flex items-center justify-center border border-outline-variant/30 group-hover:border-[#25D366]/50 transition-colors shadow-sm shrink-0">
+                <span className="material-symbols-outlined text-[#25D366] opacity-70 group-hover:opacity-100 transition-opacity text-[20px] sm:text-[24px]">chat</span>
               </div>
               <div>
-                <p className="text-[11px] font-label-mono text-on-surface-variant tracking-widest mb-1">WHATSAPP</p>
-                <p className="font-bold text-on-surface text-base md:text-lg">+91 8799747981</p>
+                <p className="text-[10px] sm:text-[11px] font-label-mono text-on-surface-variant tracking-widest mb-0.5 sm:mb-1">WHATSAPP</p>
+                <p className="font-bold text-on-surface text-sm sm:text-base md:text-lg">+91 8799747981</p>
               </div>
             </a>
           </div>
@@ -72,7 +72,7 @@ export default function Contact() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="glass-panel p-6 md:p-10 rounded-[2rem] border border-outline-variant/30 shadow-2xl"
+          className="glass-panel p-5 sm:p-8 md:p-10 rounded-2xl sm:rounded-[2rem] border border-outline-variant/30 shadow-2xl"
         >
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid sm:grid-cols-2 gap-6">

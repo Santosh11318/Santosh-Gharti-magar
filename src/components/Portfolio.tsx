@@ -61,9 +61,9 @@ export default function Portfolio() {
   );
 
   return (
-    <section className="px-6 md:px-20 max-w-[1280px] mx-auto py-32 border-t border-outline-variant/20 scroll-mt-28 relative" id="projects">
+    <section className="px-4 sm:px-6 md:px-20 max-w-[1280px] mx-auto py-16 sm:py-24 md:py-32 border-t border-outline-variant/20 scroll-mt-28 relative" id="projects">
       <span id="portfolio" className="absolute -top-28"></span>
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 sm:mb-16 gap-6">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,7 +71,7 @@ export default function Portfolio() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
           <h2 className="font-headline-lg text-headline-lg text-on-surface">Selected Works</h2>
-          <p className="font-body-md text-on-surface-variant mt-2 text-lg">A showcase of precision and performance.</p>
+          <p className="font-body-md text-on-surface-variant mt-2 text-base sm:text-lg">A showcase of precision and performance.</p>
         </motion.div>
         
         {/* Filters */}
@@ -80,7 +80,7 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap gap-3 mt-8 md:mt-0"
+          className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 scrollbar-none"
         >
           {[
             { id: "all", label: "ALL" },
@@ -92,9 +92,9 @@ export default function Portfolio() {
             <button
               key={filter.id}
               onClick={() => setActiveCategory(filter.id)}
-              className={`px-6 py-2 rounded-full text-xs font-label-mono font-bold transition-colors border ${
+              className={`px-4 sm:px-6 py-2 rounded-full text-xs font-label-mono font-bold transition-all border whitespace-nowrap cursor-pointer ${
                 activeCategory === filter.id
-                  ? "bg-primary text-on-primary border-primary"
+                  ? "bg-primary text-on-primary border-primary shadow-md shadow-primary/20"
                   : "bg-surface-container border-outline-variant/30 text-on-surface-variant hover:text-on-surface hover:border-outline-variant"
               }`}
             >

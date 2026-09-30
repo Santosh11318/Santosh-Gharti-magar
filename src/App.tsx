@@ -67,11 +67,11 @@ export default function App() {
   }, []);
 
   return (
-    <div className="min-h-screen font-body-md bg-background text-on-surface antialiased ambient-bg">
+    <div className="min-h-screen font-body-md bg-background text-on-surface antialiased ambient-bg overflow-x-hidden w-full">
       <Navbar />
       <FloatingWhatsApp />
       
-      <main className="pt-32 pb-24">
+      <main className="pt-20 sm:pt-28 md:pt-32 pb-20 sm:pb-24 overflow-x-hidden">
         <Hero />
         <About />
         <Services />
