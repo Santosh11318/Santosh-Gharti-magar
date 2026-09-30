@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { motion, useInView } from "motion/react";
+import { useInView, animate } from "motion/react";
 
 interface CounterProps {
   end: number;
@@ -8,36 +8,51 @@ interface CounterProps {
   suffix?: string;
 }
 
-export default function Counter({ end, duration = 2, prefix = "", suffix = "" }: CounterProps) {
-  const [count, setCount] = useState(0);
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+export default function Counter({ end, duration = 1.8, prefix = "", suffix = "" }: CounterProps) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  
+  // Triggers whenever element enters viewport (visible scroll-triggered animation)
+  const isInView = useInView(ref, { once: false, amount: 0.15 });
 
   useEffect(() => {
-    if (isInView) {
-      let startTime: number | null = null;
-      const animateCount = (timestamp: number) => {
-        if (!startTime) startTime = timestamp;
-        const progress = Math.min((timestamp - startTime) / (duration * 1000), 1);
-        
-        // Easing out cubic
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        
-        setCount(Math.floor(easeOut * end));
-
-        if (progress < 1) {
-          requestAnimationFrame(animateCount);
-        } else {
-          setCount(end);
-        }
-      };
-      requestAnimationFrame(animateCount);
+    if (!isInView) {
+      setDisplayValue(0);
+      return;
     }
+
+    const controls = animate(0, end, {
+      duration: duration,
+      ease: [0.16, 1, 0.3, 1],
+      onUpdate(value) {
+        setDisplayValue(Math.round(value));
+      },
+    });
+
+    return () => controls.stop();
   }, [isInView, end, duration]);
 
+  // Handle immediate presence (e.g., if page loaded directly on this section)
+  useEffect(() => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      const inViewNow = rect.top < window.innerHeight && rect.bottom > 0;
+      if (inViewNow) {
+        const controls = animate(0, end, {
+          duration: duration,
+          ease: [0.16, 1, 0.3, 1],
+          onUpdate(value) {
+            setDisplayValue(Math.round(value));
+          },
+        });
+        return () => controls.stop();
+      }
+    }
+  }, [end, duration]);
+
   return (
-    <span ref={ref}>
-      {prefix}{count.toLocaleString()}{suffix}
+    <span ref={ref} className="tabular-nums inline-block">
+      {prefix}{displayValue.toLocaleString()}{suffix}
     </span>
   );
 }
