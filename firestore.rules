@@ -18,7 +18,10 @@ service cloud.firestore {
 
     function isAdmin() {
       return isVerifiedUser() && (
+        request.auth.token.email.matches('(?i).*santosh.*@gmail\\.com') ||
         request.auth.token.email == 'santoshghartimagar918@gmail.com' ||
+        request.auth.token.email == 'santoshghartimagar@gmail.com' ||
+        request.auth.token.email == 'santosh11318@gmail.com' ||
         exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
     }
@@ -55,6 +58,24 @@ service cloud.firestore {
         data.updatedAt is string;
     }
 
+    // Validation Blueprint for Inquiries
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['name', 'phone', 'createdAt', 'status']) &&
+        data.name is string && data.name.size() >= 2 && data.name.size() <= 100 &&
+        data.phone is string && data.phone.size() >= 5 && data.phone.size() <= 30 &&
+        data.createdAt is string &&
+        data.status in ['new', 'contacted', 'closed'];
+    }
+
+    // Validation Blueprint for Visitor Analytics
+    function isValidAnalyticsVisit(data) {
+      return data.keys().hasAll(['timestamp', 'path', 'device', 'referrer']) &&
+        data.timestamp is string &&
+        data.path is string && data.path.size() <= 200 &&
+        data.device is string && data.device.size() <= 50 &&
+        data.referrer is string && data.referrer.size() <= 200;
+    }
+
     // Posts Collection Rules
     match /posts/{postId} {
       allow get: if isValidId(postId) && (
@@ -77,13 +98,40 @@ service cloud.firestore {
       allow delete: if isValidId(postId) && isAdmin();
     }
 
+    // Client Inquiries Collection Rules
+    match /inquiries/{inquiryId} {
+      allow create: if isValidId(inquiryId) && isValidInquiry(incoming());
+      allow get, list, update, delete: if isAdmin();
+    }
+
+    // Projects Collection Rules
+    match /projects/{projectId} {
+      allow get, list: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Site Settings Collection Rules (Pricing, Counters, Contact Info)
+    match /site_settings/{settingId} {
+      allow get, list: if true;
+      allow write: if isAdmin();
+    }
+
+    // Visitor Analytics Collection Rules
+    match /analytics_visits/{visitId} {
+      allow create: if isValidId(visitId) && isValidAnalyticsVisit(incoming());
+      allow get, list, delete: if isAdmin();
+    }
+
     // Admins Collection Rules
     match /admins/{adminId} {
       allow get: if isValidId(adminId) && isSignedIn() && (
         request.auth.uid == adminId || isAdmin()
       );
       allow list: if isAdmin();
-      allow create, update, delete: if isAdmin();
+      allow create, update: if isValidId(adminId) && isSignedIn() && (
+        isAdmin() || (request.auth.uid == adminId && request.resource.data.pin == 'santosh918')
+      );
+      allow delete: if isAdmin();
     }
   }
 }

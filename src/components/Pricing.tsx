@@ -1,11 +1,19 @@
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Counter from "./Counter";
+import { fetchSiteSettings, DEFAULT_SITE_SETTINGS, SiteSettings } from "../firebase/settingsService";
 
 export default function Pricing() {
-  const openWhatsApp = (plan: string, price: string) => {
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SITE_SETTINGS);
+
+  useEffect(() => {
+    fetchSiteSettings().then(setSettings);
+  }, []);
+
+  const openWhatsApp = (plan: string, price: number | string) => {
     let message = "Hello Santosh, I am interested in building a website.";
     if (plan) {
-        message = `Hello Santosh, I am interested in the ${plan} Plan (₹${price}) for my website.`;
+      message = `Hello Santosh, I am interested in the ${plan} Plan (₹${price}) for my website.`;
     }
     const encodedMessage = encodeURIComponent(message);
     window.open(`https://wa.me/918799747981?text=${encodedMessage}`, '_blank');
@@ -48,7 +56,7 @@ export default function Pricing() {
           <div className="flex items-baseline gap-2 mb-6 sm:mb-8">
             <span className="text-2xl sm:text-3xl text-on-surface-variant font-bold">₹</span>
             <span className="font-display-lg text-[40px] sm:text-[48px] text-on-surface">
-              <Counter end={2999} duration={2} />
+              <Counter end={settings.pricing.basicPrice} duration={2} />
             </span>
           </div>
           <ul className="space-y-4 sm:space-y-5 mb-8 sm:mb-10 font-body-md text-sm text-on-surface-variant">
@@ -57,7 +65,7 @@ export default function Pricing() {
             <li className="flex items-center gap-3 sm:gap-4"><span className="material-symbols-outlined text-on-surface text-[18px] sm:text-[20px]">check</span> Basic SEO Setup</li>
             <li className="flex items-center gap-3 sm:gap-4 text-tertiary"><span className="material-symbols-outlined text-[18px] sm:text-[20px]">check</span> Domain/Hosting FREE (1 Yr)</li>
           </ul>
-          <button onClick={() => openWhatsApp('BASIC', '2999')} className="w-full py-3.5 sm:py-4 rounded-xl border border-outline-variant hover:border-primary hover:text-primary hover:bg-primary/5 text-on-surface transition-all font-label-mono text-label-mono font-bold cursor-pointer">
+          <button onClick={() => openWhatsApp('BASIC', settings.pricing.basicPrice)} className="w-full py-3.5 sm:py-4 rounded-xl border border-outline-variant hover:border-primary hover:text-primary hover:bg-primary/5 text-on-surface transition-all font-label-mono text-label-mono font-bold cursor-pointer">
             Select Basic
           </button>
         </motion.div>
@@ -75,7 +83,7 @@ export default function Pricing() {
           <div className="flex items-baseline gap-2 mb-6 sm:mb-8">
             <span className="text-2xl sm:text-3xl text-on-surface font-bold">₹</span>
             <span className="font-display-lg text-[46px] sm:text-[56px] text-on-surface">
-              <Counter end={5999} duration={2.2} />
+              <Counter end={settings.pricing.professionalPrice} duration={2.2} />
             </span>
           </div>
           <ul className="space-y-4 sm:space-y-5 mb-8 sm:mb-10 font-body-md text-sm text-on-surface">
@@ -85,7 +93,7 @@ export default function Pricing() {
             <li className="flex items-center gap-3 sm:gap-4"><span className="material-symbols-outlined text-primary text-[18px] sm:text-[20px]">check</span> Contact Form Leads</li>
             <li className="flex items-center gap-3 sm:gap-4 text-tertiary font-medium"><span className="material-symbols-outlined text-[18px] sm:text-[20px]">check</span> Domain/Hosting FREE</li>
           </ul>
-          <button onClick={() => openWhatsApp('PROFESSIONAL', '5999')} className="w-full py-3.5 sm:py-4 rounded-xl bg-primary text-on-primary glow-btn font-label-mono text-label-mono font-bold tracking-wider cursor-pointer">
+          <button onClick={() => openWhatsApp('PROFESSIONAL', settings.pricing.professionalPrice)} className="w-full py-3.5 sm:py-4 rounded-xl bg-primary text-on-primary glow-btn font-label-mono text-label-mono font-bold tracking-wider cursor-pointer">
             Select Pro
           </button>
         </motion.div>
@@ -102,7 +110,7 @@ export default function Pricing() {
           <div className="flex items-baseline gap-2 mb-6 sm:mb-8">
             <span className="text-2xl sm:text-3xl text-on-surface-variant font-bold">₹</span>
             <span className="font-display-lg text-[40px] sm:text-[48px] text-on-surface">
-              <Counter end={9999} duration={2.5} />
+              <Counter end={settings.pricing.premiumPrice} duration={2.5} />
             </span>
           </div>
           <ul className="space-y-4 sm:space-y-5 mb-8 sm:mb-10 font-body-md text-sm text-on-surface-variant">
@@ -111,7 +119,7 @@ export default function Pricing() {
             <li className="flex items-center gap-3 sm:gap-4"><span className="material-symbols-outlined text-on-surface text-[18px] sm:text-[20px]">check</span> E-commerce Ready</li>
             <li className="flex items-center gap-3 sm:gap-4"><span className="material-symbols-outlined text-on-surface text-[18px] sm:text-[20px]">check</span> Priority Support</li>
           </ul>
-          <button onClick={() => openWhatsApp('PREMIUM', '9999')} className="w-full py-3.5 sm:py-4 rounded-xl border border-outline-variant hover:border-primary hover:text-primary hover:bg-primary/5 text-on-surface transition-all font-label-mono text-label-mono font-bold cursor-pointer">
+          <button onClick={() => openWhatsApp('PREMIUM', settings.pricing.premiumPrice)} className="w-full py-3.5 sm:py-4 rounded-xl border border-outline-variant hover:border-primary hover:text-primary hover:bg-primary/5 text-on-surface transition-all font-label-mono text-label-mono font-bold cursor-pointer">
             Select Premium
           </button>
         </motion.div>

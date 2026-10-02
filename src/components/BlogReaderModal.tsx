@@ -130,6 +130,18 @@ export default function BlogReaderModal({ post, onClose }: BlogReaderModalProps)
                     </h2>
                   );
                 }
+                if (paragraph.startsWith('![') && paragraph.includes('](')) {
+                  const match = paragraph.match(/!\[(.*?)\]\((.*?)\)/);
+                  if (match) {
+                    const alt = match[1] || 'Article visual';
+                    const src = match[2];
+                    return (
+                      <div key={index} className="my-6 rounded-2xl overflow-hidden border border-outline-variant/30 shadow-lg">
+                        <img src={src} alt={alt} className="w-full max-h-[500px] object-cover" />
+                      </div>
+                    );
+                  }
+                }
                 if (paragraph.startsWith('- ') || paragraph.includes('\n- ')) {
                   const items = paragraph.split('\n').filter(line => line.trim().startsWith('- '));
                   return (

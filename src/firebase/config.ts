@@ -7,8 +7,17 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app, firebaseConfig.firestoreDatabaseId);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
+// Force Google to prompt account chooser so user can select santoshghartimagar918@gmail.com
+googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-export const ADMIN_EMAIL = 'santoshghartimagar918@gmail.com';
+export const ADMIN_EMAILS = [
+  'santoshghartimagar918@gmail.com',
+  'santoshghartimagar@gmail.com',
+  'santosh11318@gmail.com'
+];
+
+export const ADMIN_EMAIL = ADMIN_EMAILS[0];
+export const ADMIN_MASTER_PIN = 'santosh918';
 
 // Connection test as required by Firebase integration guidelines
 async function testConnection() {

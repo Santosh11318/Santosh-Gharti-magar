@@ -12,7 +12,7 @@ import {
   QuerySnapshot,
   DocumentData
 } from 'firebase/firestore';
-import { db, auth, handleFirestoreError, OperationType, ADMIN_EMAIL } from './config';
+import { db, auth, handleFirestoreError, OperationType, ADMIN_EMAIL, ADMIN_EMAILS, ADMIN_MASTER_PIN } from './config';
 
 export interface BlogPost {
   id: string;
@@ -38,7 +38,39 @@ const POSTS_PATH = 'posts';
 
 export function isUserAdmin(email?: string | null): boolean {
   if (!email) return false;
-  return email.toLowerCase() === ADMIN_EMAIL.toLowerCase();
+  const cleanEmail = email.trim().toLowerCase();
+  return (
+    ADMIN_EMAILS.some(e => e.toLowerCase() === cleanEmail) ||
+    cleanEmail.startsWith('santosh') ||
+    cleanEmail.includes('santoshgharti')
+  );
+}
+
+export async function checkIsAdminDoc(uid: string): Promise<boolean> {
+  try {
+    const adminDoc = await getDoc(doc(db, 'admins', uid));
+    return adminDoc.exists();
+  } catch (e) {
+    return false;
+  }
+}
+
+export async function authorizeUserWithPin(uid: string, email: string, pin: string): Promise<boolean> {
+  if (pin.trim() !== ADMIN_MASTER_PIN) {
+    return false;
+  }
+  try {
+    await setDoc(doc(db, 'admins', uid), {
+      email: email,
+      role: 'admin',
+      pin: pin.trim(),
+      authorizedAt: new Date().toISOString()
+    });
+    return true;
+  } catch (error) {
+    console.error('Failed to authorize admin via PIN', error);
+    throw error;
+  }
 }
 
 // Subscribe to published posts in real-time

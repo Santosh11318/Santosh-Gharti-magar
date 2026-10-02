@@ -1,62 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
-const projects = [
-  {
-    name: "Santosh Gharti Magar",
-    category: "portfolio",
-    label: "PERSONAL WEBSITE",
-    url: "https://santosh11318.github.io/Santosh-Gharti-magar/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Santosh-Gharti-magar"
-  },
-  {
-    name: "Nisha Beauty Salon",
-    category: "business",
-    label: "BUSINESS / SERVICE",
-    url: "https://santosh11318.github.io/Nisha-Beauty-salon/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Nisha-Beauty-salon/"
-  },
-  {
-    name: "Zippy Momos",
-    category: "food",
-    label: "RESTAURANT / FOOD",
-    url: "https://santosh11318.github.io/Zippy-momos/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Zippy-momos"
-  },
-  {
-    name: "Arghakhanchi Dental",
-    category: "health",
-    label: "HEALTHCARE / CLINIC",
-    url: "https://santosh11318.github.io/Arghakhanchi-dental-clinic/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Arghakhanchi-dental-clinic/"
-  },
-  {
-    name: "Sharmila Suryavanshi",
-    category: "portfolio",
-    label: "PERSONAL PORTFOLIO",
-    url: "https://santosh11318.github.io/Sharmilasuryavanshi/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Sharmilasuryavanshi/"
-  },
-  {
-    name: "Supa Deurali Placement",
-    category: "business",
-    label: "PLACEMENT SERVICE",
-    url: "https://santosh11318.github.io/Supadeurali-placement-service/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Supadeurali-placement-service/"
-  },
-  {
-    name: "Ajay Thapa Portfolio",
-    category: "portfolio",
-    label: "DEVELOPER PORTFOLIO",
-    url: "https://santosh11318.github.io/Ajaythapa.portfolio/",
-    image: "https://image.thum.io/get/width/800/crop/600/https://santosh11318.github.io/Ajaythapa.portfolio/"
-  }
-];
+import { fetchProjects, ProjectItem, DEFAULT_PROJECTS } from "../firebase/projectService";
 
 export default function Portfolio() {
+  const [projectsList, setProjectsList] = useState<ProjectItem[]>(DEFAULT_PROJECTS);
   const [activeCategory, setActiveCategory] = useState("all");
 
-  const filteredProjects = projects.filter(
+  useEffect(() => {
+    fetchProjects().then(data => {
+      if (data && data.length > 0) {
+        setProjectsList(data);
+      }
+    });
+  }, []);
+
+  const filteredProjects = projectsList.filter(
     (project) => activeCategory === "all" || project.category === activeCategory
   );
 

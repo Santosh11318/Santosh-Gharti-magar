@@ -21,11 +21,17 @@ import BlogReaderModal from "./components/BlogReaderModal";
 import BlogAdminModal from "./components/BlogAdminModal";
 import { BlogPost, isUserAdmin } from "./firebase/blogService";
 import { auth } from "./firebase/config";
+import { recordVisitorHit } from "./firebase/analyticsService";
 
 export default function App() {
   const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
   const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
+
+  // Initialize Visitor Analytics Hit (once per session)
+  useEffect(() => {
+    recordVisitorHit();
+  }, []);
 
   // Monitor Admin Auth state silently
   useEffect(() => {

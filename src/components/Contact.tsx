@@ -1,5 +1,7 @@
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { motion } from "motion/react";
+import { submitInquiry } from "../firebase/inquiryService";
+import { CheckCircle2, Send, Loader2 } from "lucide-react";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -9,23 +11,50 @@ export default function Contact() {
     plan: "Professional (₹5,999)",
     budget: "< ₹5k"
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { id, value } = e.target;
     setFormData((prev) => ({ ...prev, [id.replace('form-', '')]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!formData.name || !formData.phone) {
-        alert("Please fill in Name and WhatsApp Number.");
-        return;
+      return;
     }
 
-    const message = `*New Website Inquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Business:* ${formData.business || 'N/A'}\n*Interested Plan:* ${formData.plan}\n*Budget:* ${formData.budget}`;
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/918799747981?text=${encodedMessage}`, '_blank');
+    setSubmitting(true);
+    try {
+      // 1. Persist inquiry into Firebase Firestore
+      await submitInquiry({
+        name: formData.name,
+        phone: formData.phone,
+        business: formData.business,
+        plan: formData.plan,
+        budget: formData.budget,
+        message: `Plan: ${formData.plan} | Budget: ${formData.budget}`
+      });
+
+      setSubmitted(true);
+
+      // 2. Open WhatsApp conversation with pre-filled message
+      const message = `*New Website Inquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Business:* ${formData.business || 'N/A'}\n*Interested Plan:* ${formData.plan}\n*Budget:* ${formData.budget}`;
+      const encodedMessage = encodeURIComponent(message);
+      setTimeout(() => {
+        window.open(`https://wa.me/918799747981?text=${encodedMessage}`, '_blank');
+      }, 600);
+
+    } catch (err) {
+      console.error("Failed to store inquiry", err);
+      // Fallback: still open WhatsApp
+      const message = `*New Website Inquiry*\n\n*Name:* ${formData.name}\n*Phone:* ${formData.phone}\n*Business:* ${formData.business || 'N/A'}\n*Interested Plan:* ${formData.plan}\n*Budget:* ${formData.budget}`;
+      window.open(`https://wa.me/918799747981?text=${encodeURIComponent(message)}`, '_blank');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -141,11 +170,27 @@ export default function Contact() {
               </div>
             </div>
             
+            {submitted && (
+              <div className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-label-mono flex items-center gap-2">
+                <CheckCircle2 size={16} className="shrink-0" />
+                <span>Inquiry saved securely! Opening WhatsApp to start direct conversation...</span>
+              </div>
+            )}
+
             <button 
               type="submit"
-              className="w-full py-5 bg-primary text-on-primary rounded-xl font-bold font-label-mono text-sm tracking-widest glow-btn mt-6 flex justify-center items-center gap-3"
+              disabled={submitting}
+              className="w-full py-5 bg-primary text-on-primary rounded-xl font-bold font-label-mono text-sm tracking-widest glow-btn mt-6 flex justify-center items-center gap-3 disabled:opacity-60 cursor-pointer"
             >
-              SEND VIA WHATSAPP <span className="material-symbols-outlined text-[18px]">send</span>
+              {submitting ? (
+                <>
+                  <Loader2 size={18} className="animate-spin" /> SAVING INQUIRY...
+                </>
+              ) : (
+                <>
+                  INITIALIZE &amp; CHAT ON WHATSAPP <span className="material-symbols-outlined text-[18px]">send</span>
+                </>
+              )}
             </button>
           </form>
         </motion.div>

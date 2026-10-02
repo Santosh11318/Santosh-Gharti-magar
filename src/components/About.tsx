@@ -1,7 +1,15 @@
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Counter from "./Counter";
+import { fetchSiteSettings, DEFAULT_SITE_SETTINGS, SiteSettings } from "../firebase/settingsService";
 
 export default function About() {
+  const [settings, setSettings] = useState<SiteSettings>(DEFAULT_SITE_SETTINGS);
+
+  useEffect(() => {
+    fetchSiteSettings().then(setSettings);
+  }, []);
+
   return (
     <section className="px-4 sm:px-6 md:px-20 max-w-[1280px] mx-auto py-16 sm:py-24 md:py-32 scroll-mt-28" id="about">
       <div className="mb-10 sm:mb-16">
@@ -34,19 +42,19 @@ export default function About() {
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8 pt-6 border-t border-outline-variant/20">
             <div>
               <div className="font-display-lg text-3xl sm:text-4xl text-primary font-bold mb-1">
-                <Counter end={50} suffix="+" duration={2} />
+                <Counter end={settings.stats.projectsDeployed} suffix="+" duration={2} />
               </div>
               <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">PROJECTS DEPLOYED</p>
             </div>
             <div>
               <div className="font-display-lg text-3xl sm:text-4xl text-secondary font-bold mb-1">
-                <Counter end={30} suffix="+" duration={2.2} />
+                <Counter end={settings.stats.happyClients} suffix="+" duration={2.2} />
               </div>
               <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">HAPPY CLIENTS</p>
             </div>
             <div>
               <div className="font-display-lg text-3xl sm:text-4xl text-tertiary font-bold mb-1">
-                <Counter end={99} suffix="%" duration={2.5} />
+                <Counter end={settings.stats.successRate} suffix="%" duration={2.5} />
               </div>
               <p className="font-label-mono text-[11px] sm:text-xs text-on-surface-variant tracking-widest">SUCCESS RATE</p>
             </div>
