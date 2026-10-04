@@ -3,11 +3,24 @@ import { Youtube, Facebook, ArrowUp } from "lucide-react";
 
 interface FooterProps {
   onOpenAdmin?: () => void;
+  onNavigate?: (path: string) => void;
 }
 
-export default function Footer({ onOpenAdmin }: FooterProps) {
+export default function Footer({ onOpenAdmin, onNavigate }: FooterProps) {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleLinkClick = (e: React.MouseEvent, path: string) => {
+    if (path.startsWith('/free-tools')) {
+      e.preventDefault();
+      if (onNavigate) {
+        onNavigate(path);
+      } else {
+        window.history.pushState(null, '', path);
+        window.dispatchEvent(new PopStateEvent('popstate'));
+      }
+    }
   };
 
   const handleSecretClick = (e: React.MouseEvent) => {
@@ -19,7 +32,7 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
   return (
     <footer className="bg-zinc-950 text-white pt-20 pb-10 border-t border-zinc-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10 mb-16">
           
           <div className="lg:col-span-1">
             <a href="#home" className="flex items-center space-x-3 text-xl font-bold tracking-tight mb-6">
@@ -35,8 +48,8 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
                 <span className="text-red-600 font-extrabold text-[10px] tracking-wider">DIGITAL MARKETING</span>
               </div>
             </a>
-            <p className="text-zinc-400 mb-6 max-w-sm">
-              AI Website Developer crafting premium, high-performance digital experiences.
+            <p className="text-zinc-400 mb-6 max-w-sm text-xs leading-relaxed">
+              AI Website Developer crafting premium, high-performance digital experiences and high-ranking SEO.
             </p>
             <div className="flex space-x-4">
               <a 
@@ -64,10 +77,11 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
             </div>
           </div>
 
+          {/* Quick Links */}
           <div>
-            <h3 className="font-bold text-lg mb-6">Quick Links</h3>
-            <ul className="space-y-3">
-              {['Home', 'About', 'Services', 'Pricing', 'Projects', 'Process', 'FAQ', 'Contact'].map((link) => (
+            <h3 className="font-bold text-sm uppercase tracking-wider text-zinc-300 font-label-mono mb-5">Quick Links</h3>
+            <ul className="space-y-2.5 text-xs font-label-mono">
+              {['Home', 'About', 'Services', 'Pricing', 'Portfolio', 'Blog', 'Contact'].map((link) => (
                 <li key={link}>
                   <a 
                     href={`#${link.toLowerCase()}`} 
@@ -77,6 +91,57 @@ export default function Footer({ onOpenAdmin }: FooterProps) {
                   </a>
                 </li>
               ))}
+              <li>
+                <a 
+                  href="/free-tools"
+                  onClick={(e) => handleLinkClick(e, '/free-tools')}
+                  className="text-primary hover:underline font-bold"
+                >
+                  Free Marketing Tools
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Free Marketing Tools Dedicated Column */}
+          <div>
+            <h3 className="font-bold text-sm uppercase tracking-wider text-zinc-300 font-label-mono mb-5">Free Tools</h3>
+            <ul className="space-y-2 text-xs font-label-mono">
+              <li>
+                <a href="/free-tools" onClick={(e) => handleLinkClick(e, '/free-tools')} className="text-zinc-400 hover:text-white">
+                  &bull; All 10 Free Tools
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/seo-score-checker" onClick={(e) => handleLinkClick(e, '/free-tools/seo-score-checker')} className="text-zinc-400 hover:text-white">
+                  &bull; SEO Score Checker
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/website-cost-calculator" onClick={(e) => handleLinkClick(e, '/free-tools/website-cost-calculator')} className="text-zinc-400 hover:text-white">
+                  &bull; Website Cost Calculator
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/meta-tag-generator" onClick={(e) => handleLinkClick(e, '/free-tools/meta-tag-generator')} className="text-zinc-400 hover:text-white">
+                  &bull; Meta Tag Generator
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/image-compressor" onClick={(e) => handleLinkClick(e, '/free-tools/image-compressor')} className="text-zinc-400 hover:text-white">
+                  &bull; Image Compressor
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/qr-code-generator" onClick={(e) => handleLinkClick(e, '/free-tools/qr-code-generator')} className="text-zinc-400 hover:text-white">
+                  &bull; QR Code Generator
+                </a>
+              </li>
+              <li>
+                <a href="/free-tools/gst-calculator" onClick={(e) => handleLinkClick(e, '/free-tools/gst-calculator')} className="text-zinc-400 hover:text-white">
+                  &bull; GST Tax Calculator
+                </a>
+              </li>
             </ul>
           </div>
 
