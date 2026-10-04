@@ -3,6 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <script>
+      // Single Page Apps for GitHub Pages redirect decoder
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
     <title>Santosh Gharti Magar | AI Website Developer</title>
     <meta name="description" content="Santosh Gharti Magar is an AI Website Developer creating modern, responsive and business-focused websites with professional UI/UX and SEO-friendly development." />
     
