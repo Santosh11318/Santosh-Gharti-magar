@@ -123,60 +123,55 @@ export default function ToolLayout({
   }, [tool]);
 
   return (
-    <div className="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
-      {/* Top Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="flex items-center flex-wrap gap-2 text-xs font-label-mono text-on-surface-variant mb-6">
-        <button
-          onClick={() => onNavigate('/')}
-          className="hover:text-primary transition-colors cursor-pointer"
-        >
-          Home
-        </button>
-        <ChevronRight size={13} className="text-zinc-600" />
+    <div className="w-full max-w-5xl mx-auto px-3.5 sm:px-6 lg:px-8 py-3 sm:py-6 md:py-10">
+      {/* Top Navigation Row: Back Button + Breadcrumbs */}
+      <div className="flex items-center justify-between gap-3 mb-4 sm:mb-6">
         <button
           onClick={() => onNavigate('/free-tools')}
-          className="hover:text-primary transition-colors cursor-pointer"
-        >
-          Free Tools
-        </button>
-        <ChevronRight size={13} className="text-zinc-600" />
-        <span className="text-white font-semibold truncate max-w-[200px] sm:max-w-none">
-          {tool.name}
-        </span>
-      </nav>
-
-      {/* Back button */}
-      <div className="mb-6">
-        <button
-          onClick={() => onNavigate('/free-tools')}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface hover:bg-surface-variant text-zinc-300 hover:text-white border border-outline-variant/30 text-xs font-label-mono transition-colors cursor-pointer"
+          className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-surface hover:bg-surface-variant text-zinc-300 hover:text-white border border-outline-variant/30 text-[11px] sm:text-xs font-label-mono transition-colors cursor-pointer shrink-0"
         >
           <ArrowLeft size={13} />
           <span>All Free Tools</span>
         </button>
+
+        <nav aria-label="Breadcrumb" className="flex items-center gap-1.5 text-[11px] sm:text-xs font-label-mono text-zinc-400 overflow-hidden truncate">
+          <button onClick={() => onNavigate('/')} className="hover:text-primary transition-colors cursor-pointer shrink-0">
+            Home
+          </button>
+          <ChevronRight size={11} className="text-zinc-600 shrink-0" />
+          <button onClick={() => onNavigate('/free-tools')} className="hover:text-primary transition-colors cursor-pointer shrink-0">
+            Tools
+          </button>
+          <ChevronRight size={11} className="text-zinc-600 shrink-0" />
+          <span className="text-white font-semibold truncate max-w-[120px] sm:max-w-none">
+            {tool.name}
+          </span>
+        </nav>
       </div>
 
       {/* Tool Header */}
-      <header className="mb-8 space-y-3">
-        <div className="flex items-center gap-3 text-xs text-zinc-400 font-label-mono">
-          <span className="text-primary font-bold">{tool.categoryName}</span>
-          <span aria-hidden="true">&bull;</span>
-          <span>100% Free · No Signup</span>
-          <span aria-hidden="true">&bull;</span>
-          <span>Takes {tool.estimatedTime}</span>
+      <header className="mb-6 sm:mb-8 space-y-2 sm:space-y-3">
+        <div className="flex flex-wrap items-center gap-2 text-[11px] sm:text-xs text-zinc-400 font-label-mono">
+          <span className="px-2 py-0.5 rounded-md bg-primary/10 border border-primary/25 text-primary font-bold">
+            {tool.categoryName}
+          </span>
+          <span className="text-zinc-600">&bull;</span>
+          <span className="text-emerald-400">100% Free · No Signup</span>
+          <span className="text-zinc-600">&bull;</span>
+          <span className="text-zinc-400">{tool.estimatedTime}</span>
         </div>
 
-        <h1 className="font-display-lg text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
+        <h1 className="font-display-lg text-2xl sm:text-4xl md:text-5xl font-black text-white leading-tight">
           {tool.name}
         </h1>
 
-        <p className="text-on-surface-variant text-base sm:text-lg max-w-3xl leading-relaxed">
+        <p className="text-on-surface-variant text-xs sm:text-base max-w-3xl leading-relaxed">
           {tool.shortDescription}
         </p>
       </header>
 
       {/* Main Interactive Tool Interface Card */}
-      <main className="mb-14">
+      <main className="mb-10 sm:mb-14">
         {children}
       </main>
 

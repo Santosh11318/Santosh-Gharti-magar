@@ -209,29 +209,29 @@ export default function SeoScoreChecker({ onNavigate }: { onNavigate: (path: str
     >
       <div className="space-y-8">
         {/* Input Form Card */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-surface/70 border border-outline-variant/40 shadow-xl space-y-4">
-          <form onSubmit={handleAnalyze} className="space-y-4">
+        <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-surface/70 border border-outline-variant/40 shadow-xl space-y-3 sm:space-y-4">
+          <form onSubmit={handleAnalyze} className="space-y-3 sm:space-y-4">
             <label className="block text-xs font-label-mono text-zinc-300 font-bold uppercase tracking-wider">
               Enter Website URL to Check
             </label>
 
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
               <div className="relative flex-1">
-                <Globe size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
+                <Globe size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-500 pointer-events-none" />
                 <input
                   type="text"
                   required
                   placeholder="https://example.com or yourbrand.com"
                   value={urlInput}
                   onChange={(e) => setUrlInput(e.target.value)}
-                  className="w-full pl-11 pr-4 py-3.5 rounded-2xl bg-surface border border-outline-variant text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-primary font-mono"
+                  className="w-full pl-10 pr-3.5 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-surface border border-outline-variant text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-primary font-mono"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading || !urlInput.trim()}
-                className="px-8 py-3.5 rounded-2xl bg-primary hover:bg-red-700 text-on-primary font-label-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-primary/25 disabled:opacity-50 shrink-0 glow-btn"
+                className="w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 rounded-xl sm:rounded-2xl bg-primary hover:bg-red-700 text-on-primary font-label-mono text-xs font-bold uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-primary/25 disabled:opacity-50 shrink-0 glow-btn"
               >
                 {loading ? (
                   <>
@@ -246,7 +246,7 @@ export default function SeoScoreChecker({ onNavigate }: { onNavigate: (path: str
                 )}
               </button>
             </div>
-            <p className="text-[11px] text-zinc-400 font-mono">
+            <p className="text-[10px] sm:text-[11px] text-zinc-400 font-mono">
               Note: This browser-based audit inspects URL protocols, security, mobile viewport, meta tags, and structure without storing your data.
             </p>
           </form>
@@ -254,38 +254,38 @@ export default function SeoScoreChecker({ onNavigate }: { onNavigate: (path: str
 
         {/* Results Display */}
         {results && (
-          <div className="space-y-6 animate-fade-in">
+          <div className="space-y-4 sm:space-y-6 animate-fade-in">
             {/* Scorecard Hero */}
-            <div className="p-6 sm:p-8 rounded-3xl bg-surface/80 border border-outline-variant/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
-              <div className="flex items-center gap-6">
-                <div className={`w-24 h-24 sm:w-28 sm:h-28 rounded-3xl flex flex-col items-center justify-center font-display-lg border-2 shadow-xl ${
+            <div className="p-4 sm:p-6 rounded-2xl sm:rounded-3xl bg-surface/80 border border-outline-variant/40 shadow-xl flex flex-col md:flex-row items-center justify-between gap-5 sm:gap-6">
+              <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6 text-center sm:text-left w-full sm:w-auto">
+                <div className={`w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl flex flex-col items-center justify-center font-display-lg border-2 shadow-xl shrink-0 ${
                   results.score >= 80
                     ? 'bg-emerald-500/10 border-emerald-500 text-emerald-400'
                     : results.score >= 60
                     ? 'bg-amber-500/10 border-amber-500 text-amber-400'
                     : 'bg-red-500/10 border-red-500 text-red-400'
                 }`}>
-                  <span className="text-3xl sm:text-4xl font-extrabold">{results.score}</span>
-                  <span className="text-[10px] font-label-mono text-zinc-400 uppercase tracking-wider">/ 100</span>
+                  <span className="text-2xl sm:text-4xl font-extrabold">{results.score}</span>
+                  <span className="text-[9px] sm:text-[10px] font-label-mono text-zinc-400 uppercase tracking-wider">/ 100</span>
                 </div>
 
-                <div className="space-y-1">
-                  <span className={`px-2.5 py-0.5 rounded-md text-[11px] font-label-mono font-bold uppercase ${
+                <div className="space-y-1 min-w-0">
+                  <span className={`inline-block px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-label-mono font-bold uppercase ${
                     results.score >= 80 ? 'bg-emerald-500/20 text-emerald-300' : results.score >= 60 ? 'bg-amber-500/20 text-amber-300' : 'bg-red-500/20 text-red-300'
                   }`}>
                     {results.score >= 80 ? 'Good SEO Health' : results.score >= 60 ? 'Moderate - Needs Optimization' : 'Poor - Urgent Fixes Needed'}
                   </span>
-                  <h3 className="text-xl sm:text-2xl font-bold text-white truncate max-w-sm sm:max-w-md">
+                  <h3 className="text-base sm:text-xl font-bold text-white truncate max-w-xs sm:max-w-md">
                     {results.url}
                   </h3>
-                  <p className="text-xs text-on-surface-variant font-label-mono">
-                    Found {results.passedCount} passed &bull; {results.warningCount} improvements &bull; {results.failedCount} missing
+                  <p className="text-[11px] sm:text-xs text-on-surface-variant font-label-mono">
+                    {results.passedCount} passed &bull; {results.warningCount} improvements &bull; {results.failedCount} missing
                   </p>
                 </div>
               </div>
 
               {/* Quick Summary Pill Row */}
-              <div className="flex items-center gap-3 w-full md:w-auto justify-end">
+              <div className="w-full md:w-auto">
                 <a
                   href={`https://wa.me/918799747981?text=${encodeURIComponent(`Hi Santosh, my site ${results.url} scored ${results.score}/100 on your SEO checker. I want a complete website SEO audit.`)}`}
                   target="_blank"

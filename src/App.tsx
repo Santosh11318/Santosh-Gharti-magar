@@ -176,7 +176,7 @@ export default function App() {
       <Navbar onNavigate={navigate} currentPath={currentPath} />
       <FloatingWhatsApp />
       
-      <main className="pt-20 sm:pt-28 md:pt-32 pb-20 sm:pb-24 overflow-x-hidden">
+      <main className="pt-24 sm:pt-28 md:pt-32 pb-20 sm:pb-24 overflow-x-hidden min-h-[calc(100vh-80px)]">
         {renderContent()}
       </main>
 

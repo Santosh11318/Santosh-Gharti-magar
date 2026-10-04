@@ -93,18 +93,18 @@ export default function FreeToolsHub({ onNavigate }: FreeToolsHubProps) {
       {/* Search Bar & Filter Controls */}
       <div className="mb-8 space-y-4">
         <div className="relative max-w-md mx-auto">
-          <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+          <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
           <input
             type="text"
             placeholder="Search tools (e.g. SEO, GST, QR Code, Images)..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-11 pr-4 py-3 rounded-2xl bg-surface/80 border border-outline-variant/40 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-primary shadow-sm"
+            className="w-full pl-10 pr-4 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl bg-surface/80 border border-outline-variant/40 text-xs sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-primary shadow-sm"
           />
         </div>
 
-        {/* Category Tabs */}
-        <div className="flex items-center justify-center flex-wrap gap-2 pt-2">
+        {/* Category Tabs - Horizontally scrollable on mobile */}
+        <div className="flex items-center sm:justify-center overflow-x-auto pb-1.5 pt-1 gap-2 scrollbar-none -mx-4 px-4 sm:mx-0 sm:px-0">
           {TOOL_CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.id;
             return (
@@ -112,7 +112,7 @@ export default function FreeToolsHub({ onNavigate }: FreeToolsHubProps) {
                 key={cat.id}
                 type="button"
                 onClick={() => setSelectedCategory(cat.id)}
-                className={`px-4 py-2 rounded-xl text-xs font-label-mono font-bold tracking-wider uppercase transition-all cursor-pointer ${
+                className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-[11px] sm:text-xs font-label-mono font-bold tracking-wider uppercase transition-all whitespace-nowrap cursor-pointer shrink-0 ${
                   isActive
                     ? 'bg-primary text-on-primary shadow-lg shadow-primary/25'
                     : 'bg-surface/70 hover:bg-surface text-on-surface-variant hover:text-white border border-outline-variant/30'
@@ -127,8 +127,8 @@ export default function FreeToolsHub({ onNavigate }: FreeToolsHubProps) {
 
       {/* Tools Grid */}
       {filteredTools.length === 0 ? (
-        <div className="text-center py-16 p-6 rounded-3xl bg-surface/40 border border-outline-variant/30 space-y-3">
-          <p className="text-base text-zinc-400">No tools found matching "{searchQuery}".</p>
+        <div className="text-center py-12 p-5 rounded-2xl sm:rounded-3xl bg-surface/40 border border-outline-variant/30 space-y-3">
+          <p className="text-sm sm:text-base text-zinc-400">No tools found matching "{searchQuery}".</p>
           <button
             onClick={() => { setSearchQuery(''); setSelectedCategory('all'); }}
             className="px-4 py-2 rounded-xl bg-primary text-on-primary text-xs font-label-mono font-bold uppercase cursor-pointer"
@@ -137,20 +137,20 @@ export default function FreeToolsHub({ onNavigate }: FreeToolsHubProps) {
           </button>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-12 sm:mb-16">
           {filteredTools.map((tool) => (
             <div
               key={tool.id}
               onClick={() => onNavigate(tool.path)}
-              className="p-6 rounded-3xl bg-surface/70 border border-outline-variant/30 hover:border-primary/50 transition-all hover:translate-y-[-3px] flex flex-col justify-between group cursor-pointer shadow-lg hover:shadow-primary/5"
+              className="p-5 sm:p-6 rounded-2xl sm:rounded-3xl bg-surface/70 border border-outline-variant/30 hover:border-primary/50 transition-all hover:translate-y-[-3px] flex flex-col justify-between group cursor-pointer shadow-lg hover:shadow-primary/5"
             >
               <div>
-                <div className="flex items-center justify-between text-xs text-zinc-400 mb-3 font-label-mono">
+                <div className="flex items-center justify-between text-[11px] sm:text-xs text-zinc-400 mb-2.5 font-label-mono">
                   <span className="text-primary font-bold">{tool.categoryName}</span>
                   <span className="text-zinc-500">{tool.estimatedTime}</span>
                 </div>
 
-                <h2 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-2.5">
+                <h2 className="text-lg sm:text-xl font-bold text-white group-hover:text-primary transition-colors mb-2">
                   {tool.name}
                 </h2>
 
@@ -159,11 +159,11 @@ export default function FreeToolsHub({ onNavigate }: FreeToolsHubProps) {
                 </p>
               </div>
 
-              <div className="mt-6 pt-4 border-t border-outline-variant/20 flex items-center justify-between">
-                <span className="text-xs font-label-mono text-zinc-500">Free Forever</span>
+              <div className="mt-5 pt-3.5 border-t border-outline-variant/20 flex items-center justify-between">
+                <span className="text-[11px] font-label-mono text-zinc-500">Free Forever</span>
                 <span className="inline-flex items-center gap-1.5 text-xs font-label-mono text-primary font-bold uppercase group-hover:translate-x-1 transition-transform">
                   <span>Use Tool</span>
-                  <ArrowRight size={14} />
+                  <ArrowRight size={13} />
                 </span>
               </div>
             </div>
